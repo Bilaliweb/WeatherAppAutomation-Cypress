@@ -15,7 +15,7 @@ describe('Automated Test Cases for Open Weather Website', () => {
     .wait(3500)
   })
 
-  it('Search for a city', () => {
+  it('Search for a valid city', () => {
     // Access search bar
     weather.search.toGetSearchedCity('Lahore')
     weather.search.toCheckSearchedCity()
@@ -23,7 +23,7 @@ describe('Automated Test Cases for Open Weather Website', () => {
     .should('contain.text', 'Lahore')
   })
 
-  it('Negative search for a city', () => {
+  it('Search for a non-valid city', () => {
     // Access search bar and type false name
     weather.search.typeToSearchCity('Lahoren')
     weather.cityNotFoundNotification()

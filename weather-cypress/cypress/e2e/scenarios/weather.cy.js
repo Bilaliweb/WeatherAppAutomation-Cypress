@@ -71,24 +71,26 @@ describe('Automated Test Cases for Open Weather Website', () => {
     weather.search.toGetSearchedCity('Lahore')
     weather.search.toCheckSearchedCity()
     .should('be.visible')
-    .should('contain.text', 'Lahore')
+    .should('contain.text', 'Lahore').wait(1000)
     
     // Access weather forecast
     weather.getWeatherForecast()
     .then((value) => {
       // Log to check All Forecast Data
-      // cy.log('Forecast value', value)
+      cy.log('Forecast value', value)
       weather.getWeatherForecast()
       .should('be.visible')
       .should('contain.text', value[0].childNodes[1].childNodes[0].childNodes[1].data)
       .should('contain.text', value[0].childNodes[2].childNodes[1].data)
-      // Humidity
+      // // Humidity
       .should('contain.text', `Humidity:${value[0].childNodes[3].childNodes[1].data}`)
-      // UV
-      .should('contain.text', `UV:${value[0].childNodes[4].childNodes[1].data}`)
-      // Dew Point
+      /** 
+       UV -> Is removed now and it won't work but in future if it resumes we can just uncomment this line 
+      */
+      // .should('contain.text', `UV:${value[0].childNodes[4].childNodes[1].data}`)
+      // // Dew Point
       .should('contain.text', `Dew point:${value[0].childNodes[5].childNodes[1].data}`)
-      // Visibility
+      // // Visibility
       .should('contain.text', `Visibility:${value[0].childNodes[6].childNodes[1].data}`)
     })
   })

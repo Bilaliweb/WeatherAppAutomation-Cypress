@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^12.15.0",
+    "cypress": "^12.17.4",
     "dayjs": "^1.11.8"
   }
 }
